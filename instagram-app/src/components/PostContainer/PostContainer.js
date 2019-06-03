@@ -1,17 +1,19 @@
-import React from 'react';
-import Header from './Header.js';
-/* import CommentSection from "./components/CommentSection/CommentSection.js" */
+import React from "react";
+import PostHeader from "./PostHeader.js";
+import CommentSection from "./CommentSection/CommentSection.js";
 
-function PostContainer(data) {
-  return (
-    <div className="PostContainer">
-        <Header thumbnail= {data.thumbnail} name={data.username} />
-        <img src = {data.imgURL} alt="img"/>
-        <div>
-            <span>{data.likes} likes</span>
-        </div>
+function PostContainer(props) {
+  return props.data.map(element => (
+    <div className="postContainer grey-border">
+      <PostHeader element={element} />
+      <div className="imgDiv">
+      <img className="img" src={element.imageUrl} alt="Postimage" />
+      </div>
+      <div className="bold spacebottop marginleft">{element.likes} likes</div>
+      <CommentSection comments={element.comments} />
+      <input className="comment spacebottop commentbox marginleft"value="Add a comment..." type="text" />
     </div>
-  );
+  ));
 }
 
 export default PostContainer;

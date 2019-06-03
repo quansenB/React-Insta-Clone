@@ -1,11 +1,15 @@
 import React from 'react';
+import Header from './Header.js';
 /* import CommentSection from "./components/CommentSection/CommentSection.js" */
 
-function PostContainer() {
+function PostContainer(data) {
   return (
     <div className="PostContainer">
-     <h1>PostContainer</h1>
-
+        <Header thumbnail= {data.thumbnail} name={data.username} />
+        <img src = {data.imgURL} alt="img"/>
+        <div>
+            <span>{data.likes} likes</span>
+        </div>
     </div>
   );
 }

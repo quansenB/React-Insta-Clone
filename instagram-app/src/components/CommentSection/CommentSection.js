@@ -1,9 +1,14 @@
 import React from 'react';
 
-function CommentSection() {
+function CommentSection(comment) {
   return (
     <div className="CommentSection">
-     <h1>CommentSection</h1>
+     comments.map( (element) => (
+       <div> 
+         <span className="commenter">{comment.username}</span>
+         {comment.text}
+       </div>
+     ))
 
     </div>
   );

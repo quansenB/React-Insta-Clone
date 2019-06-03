@@ -1,9 +1,16 @@
 import React from 'react';
+import Logo from "./Logo.js";
+
 
 function SearchBar() {
   return (
     <div className="SearchBar">
-     <h1>SearchBar</h1>
+     
+     <Logo/>
+     <input 
+     type="text" 
+     value ="Search">
+     </input>
 
     </div>
   );

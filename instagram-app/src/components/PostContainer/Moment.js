@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import propTypes from "prop-types"
 
 function Moment(props) {
   return (
@@ -8,5 +9,13 @@ function Moment(props) {
     </div>
   );
 }
+
+Moment.propTypes = {
+    className: propTypes.string,
+}
+
+Moment.defaultProps = {
+  className : "",
+};
 
 export default Moment;

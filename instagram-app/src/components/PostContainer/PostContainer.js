@@ -2,6 +2,7 @@ import React from "react";
 import PostHeader from "./PostHeader.js";
 import CommentSection from "./CommentSection/CommentSection.js";
 import Moment from "./Moment.js"
+import propTypes from "prop-types"
 
 function PostContainer(props) {
   return props.data.map(element => (
@@ -17,5 +18,28 @@ function PostContainer(props) {
     </div>
   ));
 }
+
+PostContainer.propTypes = {
+    element : propTypes.shape(
+      {
+      username: propTypes.string.isRequired,
+      thumbnailUrl: propTypes.string.isRequired,
+      imageUrl: propTypes.string.isRequired,
+      likes: propTypes.number.isRequired,
+      timestamp: propTypes.string.isRequired,
+      comments : propTypes.shape(
+        {
+          username: propTypes.string.isRequired,
+          text: propTypes.string.isRequired,
+        }
+      )
+      }
+    ),
+    className: propTypes.string,
+}
+
+PostContainer.defaultProps = {
+  className : "",
+};
 
 export default PostContainer;

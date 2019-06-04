@@ -31,7 +31,7 @@ const dummyData = [
       imageUrl:
         "https://tk-assets.lambdaschool.com/89d13918-b7a2-4b40-9658-f376ea3f6b59_37131538_213683546146400_1083714364399157248_n.jpg",
       likes: 4307,
-      timestamp: "July 15th 2017, 03:12:09 pm",
+      timestamp: "July 15th 2016, 03:12:09 pm",
       comments: [
         {
           username: "twitch",
@@ -62,7 +62,7 @@ const dummyData = [
       imageUrl:
         "https://tk-assets.lambdaschool.com/43bf01f9-319c-469d-8cf5-0120fe1007f1_yosemite.jpg",
       likes: 5306,
-      timestamp: "July 14th 2017, 10:04:08 am",
+      timestamp: "July 14th 2015, 10:04:08 am",
       comments: [
         {
           username: "playhearthstone",

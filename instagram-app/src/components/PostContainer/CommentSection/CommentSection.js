@@ -1,24 +1,44 @@
 import React from "react";
 import propTypes from "prop-types";
+import Moment from "./Moment.js";
 
-function CommentSection(props) {
-  return props.comments.map(element => (
-    <div className="marginleft">
-      <span className="bold">{element.username} </span> {element.text}
-    </div>
-  ));
+class CommentSection extends React.Component {
+  
+  constructor(props){
+    super(props);
+    this.state ={
+      comments: props.element.comments,
+      newComment: "",
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.element.comments.map(element => (
+          <div className="marginleft" key={element.text}>
+            <span className="bold">{element.username} </span> {element.text}
+          </div>
+        ))}
+
+        <Moment time={this.props.element.timestamp} />
+
+        <form onSubmit={() => console.log("text")}>
+          <input
+            onChange={(event) => this.setState( {newComment: event.target.value} )
+            }
+            className="comment spacebottop commentbox marginleft"
+            value="Add a comment..."
+            type="text"
+          />
+        </form>
+      </div>
+    );
+  }
 }
 
 CommentSection.propTypes = {
-  comments: propTypes.arrayOf(propTypes.object).isRequired,
-  className: propTypes.string,
-  username: propTypes.string.isRequired,
   element: propTypes.object.isRequired,
-  text: propTypes.string.isRequired
-};
-
-CommentSection.defaultProps = {
-  className : "",
 };
 
 export default CommentSection;

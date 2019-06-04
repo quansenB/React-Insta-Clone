@@ -5,16 +5,15 @@ import PostContainer from "./components/PostContainer/PostContainer.js";
 import dummyData from "./dummy-data.js";
 
 class App extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      data: [],
-    }
+      data: []
+    };
   }
 
-  componentDidMount(){
-    this.setState({data : dummyData});
+  componentDidMount() {
+    this.setState({ data: dummyData });
   }
 
   render() {

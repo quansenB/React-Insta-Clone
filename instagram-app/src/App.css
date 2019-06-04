@@ -122,3 +122,11 @@ img {
 .postContainer {
   margin: 1rem 0;
 }
+
+.grey{
+  color: grey;
+}
+
+.smaller{
+  font-size: 0.8em;
+}

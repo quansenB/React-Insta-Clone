@@ -1,13 +1,14 @@
 import React from "react";
 import propTypes from "prop-types";
 import Moment from "./Moment.js";
+import uuid from "uuid";
 
 class CommentSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       comments: props.element.comments,
-      newComment: "Add"
+      newComment: "Add a comment..."
     };
   }
 
@@ -19,25 +20,34 @@ class CommentSection extends React.Component {
     event.preventDefault();
     this.setState({
       comments: this.state.comments.concat({
+        uuid: uuid(),
         username: "Iñaki",
         text: this.state.newComment
-      })
+      }),
+      newComment: "Add a comment..."
     });
-    console.log(this.state.comments);
   };
+
+  onClick = event => {
+    if (this.state.newComment === "Add a comment...")
+      this.setState({
+        newComment: ""
+      });
+  };
+
 
   render() {
     return (
       <div>
         {this.state.comments.map(element => (
-          <div className="marginleft" key={element.text}>
+          <div className="marginleft" key={uuid()}>
             <span className="bold">{element.username} </span> {element.text}
           </div>
         ))}
 
         <Moment time={this.props.element.timestamp} />
 
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} onClick={this.onClick}>
           <input
             onChange={this.onChange}
             className="comment spacebottop commentbox marginleft"

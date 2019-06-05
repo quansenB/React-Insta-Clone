@@ -1,4 +1,5 @@
 import React from "react";
+/* import propTypes from "prop-types" */
 
 function SearchBar() {
   return (
@@ -12,7 +13,7 @@ function SearchBar() {
           </g>
         </svg>
       </div>
-      <input className="search" type="text" value="Search" />
+      <input onChange={() => console.log("xyz)")} className="search" type="text" value="Search" />
     </div>
   );
 }

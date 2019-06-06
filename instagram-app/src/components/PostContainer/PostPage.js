@@ -7,7 +7,7 @@ import Login from "../Login/Login.js";
 function PostPage(props) {
   return (
     <div className="App">
-      {props.isAuthed ? (
+      {props.isAuthed===true ? (
         ((
           <SearchBar
             searchValue={props.parent.state.search}

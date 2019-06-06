@@ -4,7 +4,7 @@ import dummyData from "./dummy-data.js";
 import PostPage from "./components/PostContainer/PostPage.js";
 
 localStorage.setItem("Username", "Iñaki");
-localStorage.setItem("Username", "password123");
+localStorage.setItem("Password", "password123");
 sessionStorage.setItem("isAuthed", false);
 
 const withAuth = Component => {
@@ -12,24 +12,49 @@ const withAuth = Component => {
     constructor(props) {
       super(props);
       this.state = {
-        isAuthed: sessionStorage.getItem("isAuthed")
+        isAuthed: sessionStorage.getItem("isAuthed"),
+        currentUsername: "",
+        currentPw: "",
+        errorCssDisplay: ""
       };
     }
 
-    onPwChange = () => {
-      console.log("test");
+    componentDidMount = () => {
+      console.log(this.state.isAuthed);
     };
 
-    onUsernameChange = () => {
-      console.log("test");
+    onPwChange = event => {
+      event.preventDefault();
+      this.setState({ currentPw: event.target.value });
     };
 
-    onLogin = () => {
-      console.log("test");
+    onUsernameChange = event => {
+      event.preventDefault();
+      this.setState({ currentUsername: event.target.value });
+    };
+
+    onLogin = event => {
+      event.preventDefault();
+      if (
+        this.state.currentUsername === localStorage.getItem("Username") &&
+        this.state.currentPw === localStorage.getItem("Password")
+      ) {
+        localStorage.setItem("isAuthed", true);
+        this.setState({ isAuthed: true });
+      } else {
+        this.setState({ errorCssDisplay: "CssDisplay" });
+      }
     };
 
     render() {
-      return <Component isAuthed={this.state.isAuthed} parent={this} />;
+      return (
+        <Component
+          isAuthed={this.state.isAuthed}
+          parent={this}
+          cssDisplay={this.state.errorCssDisplay}
+          {...this.props}
+        />
+      );
     }
   };
 };
@@ -42,9 +67,7 @@ class App extends React.Component {
     this.state = {
       data: dummyData,
       filteredData: [],
-      search: "",
-      currentUsername: "",
-      currentPw: ""
+      search: ""
     };
   }
 
@@ -77,7 +100,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <PostPageWithAuth />
+        <PostPageWithAuth parent={this} />
       </div>
     );
   }

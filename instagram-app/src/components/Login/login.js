@@ -21,12 +21,10 @@ function Login(props) {
         />
         <input
           className="logininput"
-          className="logininput"
           type="submit"
           value="Login"
         />
       </form>
-      {/* <button onClick={() => props.onLogin}> Login</button> */}
     </div>
   );
 }

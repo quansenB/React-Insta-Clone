@@ -83,6 +83,14 @@ img {
   margin: 0.5rem 0;
 }
 
+.spacetop {
+  margin: 0.5rem 0 0 0;
+}
+
+.spacebot {
+  margin: 0 0 0.5rem 0;
+}
+
 .SearchBar {
   justify-content: space-between;
   align-items: center;

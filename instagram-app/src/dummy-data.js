@@ -1,6 +1,9 @@
+import uuid from "uuid";
+
 const dummyData = [
     {
-      username: "philzcoffee",
+      username: "phil",
+      uuid : uuid(),
       thumbnailUrl:
         "https://tk-assets.lambdaschool.com/ecd33d34-c124-4b75-92d2-e5c52c171ed8_11201517_887808411287357_1307163552_a.jpg",
   
@@ -10,15 +13,18 @@ const dummyData = [
       timestamp: "July 17th 2017, 12:42:40 pm",
       comments: [
         {
+          uuid : uuid(),
           username: "philzcoffee",
           text:
             "We've got more than just delicious coffees to offer at our shops!"
         },
         {
+          uuid : uuid(),
           username: "biancasaurus",
           text: "Looks delicious!"
         },
         {
+          uuid : uuid(),
           username: "martinseludo",
           text: "Can't wait to try it!"
         }
@@ -26,6 +32,7 @@ const dummyData = [
     },
     {
       username: "fortnite",
+      uuid : uuid(),
       thumbnailUrl:
         "https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg",
       imageUrl:
@@ -34,22 +41,27 @@ const dummyData = [
       timestamp: "July 15th 2016, 03:12:09 pm",
       comments: [
         {
+          uuid : uuid(),
           username: "twitch",
           text: "Epic Street Fighter action here in Las Vegas at #EVO2017!"
         },
         {
+          uuid : uuid(),
           username: "michaelmarzetta",
           text: "Omg that match was crazy"
         },
         {
+          uuid : uuid(),
           username: "themexican_leprechaun",
           text: "What a setup"
         },
         {
+          uuid : uuid(),
           username: "dennis_futbol",
           text: "It that injustice"
         },
         {
+          uuid : uuid(),
           username: "dennis_futbol",
           text: "Is"
         }
@@ -57,6 +69,7 @@ const dummyData = [
     },
     {
       username: "playhearthstone",
+      uuid : uuid(),
       thumbnailUrl:
         "https://tk-assets.lambdaschool.com/c432f179-8bd7-4758-959d-d88a21f96bca_37105899_432228420518610_5035444036064772096_n.jpg",
       imageUrl:
@@ -65,14 +78,17 @@ const dummyData = [
       timestamp: "July 14th 2015, 10:04:08 am",
       comments: [
         {
+          uuid : uuid(),
           username: "playhearthstone",
           text: "Love this shot!"
         },
         {
+          uuid : uuid(),
           username: "awaywetravel",
           text: "Yosemite is my most favorite place in the universe"
         },
         {
+          uuid : uuid(),
           username: "awesomebt28",
           text: "I like how Half Dome looks so old and useless"
         }

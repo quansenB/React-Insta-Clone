@@ -2,6 +2,9 @@ import React from "react";
 import "./App.css";
 import dummyData from "./dummy-data.js";
 import PostPage from "./components/PostContainer/PostPage.js";
+import Login from "./components/Login/login";
+
+
 
 class App extends React.Component {
   constructor(props) {

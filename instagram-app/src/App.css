@@ -57,7 +57,6 @@ img {
 
 .img {
   width: 100%;
-
 }
 
 .flexrow {
@@ -117,10 +116,21 @@ img {
   margin: 1rem 0;
 }
 
-.grey{
+.grey {
   color: grey;
 }
 
-.smaller{
+.smaller {
   font-size: 0.8em;
+}
+
+.loginform {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logininput{
+  margin: 0.5rem 0;
 }

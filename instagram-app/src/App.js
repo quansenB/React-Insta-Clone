@@ -2,9 +2,39 @@ import React from "react";
 import "./App.css";
 import dummyData from "./dummy-data.js";
 import PostPage from "./components/PostContainer/PostPage.js";
-import Login from "./components/Login/login";
 
+localStorage.setItem("Username", "Iñaki");
+localStorage.setItem("Username", "password123");
+sessionStorage.setItem("isAuthed", false);
 
+const withAuth = Component => {
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isAuthed: sessionStorage.getItem("isAuthed")
+      };
+    }
+
+    onPwChange = () => {
+      console.log("test");
+    };
+
+    onUsernameChange = () => {
+      console.log("test");
+    };
+
+    onLogin = () => {
+      console.log("test");
+    };
+
+    render() {
+      return <Component isAuthed={this.state.isAuthed} parent={this} />;
+    }
+  };
+};
+
+const PostPageWithAuth = withAuth(PostPage);
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +42,9 @@ class App extends React.Component {
     this.state = {
       data: dummyData,
       filteredData: [],
-      search: ""
+      search: "",
+      currentUsername: "",
+      currentPw: ""
     };
   }
 
@@ -45,7 +77,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <PostPage parent={this} />
+        <PostPageWithAuth />
       </div>
     );
   }

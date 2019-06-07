@@ -1,69 +1,106 @@
 import React from "react";
 import "./App.css";
-import SearchBar from "./components/SearchBar/SearchBar.js";
-import PostContainer from "./components/PostContainer/PostContainer.js";
 import dummyData from "./dummy-data.js";
-import uuid from "uuid";
+import PostPage from "./components/PostContainer/PostPage.js";
+
+localStorage.setItem("Username", "Iñaki");
+localStorage.setItem("Password", "password123");
+sessionStorage.setItem("isAuthed", false);
+
+const withAuth = Component => {
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isAuthed: sessionStorage.getItem("isAuthed"),
+        currentUsername: "",
+        currentPw: "",
+        errorCssDisplay: ""
+      };
+    }
+
+    componentDidMount = () => {
+      console.log(this.state.isAuthed);
+    };
+
+    onPwChange = event => {
+      event.preventDefault();
+      this.setState({ currentPw: event.target.value });
+    };
+
+    onUsernameChange = event => {
+      event.preventDefault();
+      this.setState({ currentUsername: event.target.value });
+    };
+
+    onLogin = event => {
+      event.preventDefault();
+      if (
+        this.state.currentUsername === localStorage.getItem("Username") &&
+        this.state.currentPw === localStorage.getItem("Password")
+      ) {
+        localStorage.setItem("isAuthed", true);
+        this.setState({ isAuthed: true });
+      } else {
+        this.setState({ errorCssDisplay: "CssDisplay" });
+      }
+    };
+
+    render() {
+      return (
+        <Component
+          isAuthed={this.state.isAuthed}
+          parent={this}
+          cssDisplay={this.state.errorCssDisplay}
+          {...this.props}
+        />
+      );
+    }
+  };
+};
+
+const PostPageWithAuth = withAuth(PostPage);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: dummyData,
-      filteredData: dummyData,
-      search: "Search",
+      filteredData: [],
+      search: ""
     };
-
   }
 
   componentDidMount() {
     this.setState({ data: dummyData });
   }
 
-  onClickHeart = (uuid) => {
+  onClickHeart = uuid => {
     const postRight = this.state.data.filter(post => {
       return post.uuid === uuid;
     });
     postRight[0].likes = postRight[0].likes + 1;
     const abc = postRight[0];
-    this.setState( {abc} );
-  }
+    this.setState({ abc });
+  };
 
-  
-  onSearch = (event) => {
+  onSearch = event => {
     event.preventDefault();
-    console.log(this.state.search);
-    this.setState({ search: event.target.value });
-    const filtered = this.state.data.filter((entry) => {
+    const filtered = this.state.data.filter(entry => {
       return entry.username === this.state.search;
-    })
-    console.log(filtered);
-    this.setState({filteredData: filtered} );
+    });
+    this.setState({ filteredData: filtered });
   };
 
-  onChange = (event) => {
+  onChange = event => {
     event.preventDefault();
     this.setState({ search: event.target.value });
   };
-
-  onSearchClick = () =>{
-    if(this.state.search === "Search"){
-      this.setState({search : ""});
-    }
-  }
 
   render() {
     return (
       <div className="App">
-        <SearchBar key={uuid()} default={this.state.search} onChange={this.onChange} onSearch={this.onSearch} onSearchClick={this.onSearchClick}/>
-        {this.state.filteredData.map(element => (
-          <PostContainer
-            element={element}
-            key={uuid()}
-            uuid={element.uuid}
-            onClickHeart={this.onClickHeart}
-          />
-        ))}
+        <PostPageWithAuth parent={this} />
       </div>
     );
   }

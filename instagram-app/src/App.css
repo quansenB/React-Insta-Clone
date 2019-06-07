@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 30%;
   margin: 0 auto;
+  width: 60%;
 }
 
 .App-logo {
@@ -13,18 +13,7 @@
   height: 100%;
   width: 100%;
 }
-/* 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
- */
+
 .App-link {
   color: #61dafb;
 }
@@ -67,10 +56,6 @@ img {
 }
 
 .img {
-  width: 100%;
-}
-
-.imgDiv {
   width: 100%;
 }
 
@@ -131,10 +116,21 @@ img {
   margin: 1rem 0;
 }
 
-.grey{
+.grey {
   color: grey;
 }
 
-.smaller{
+.smaller {
   font-size: 0.8em;
+}
+
+.loginform {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logininput{
+  margin: 0.5rem 0;
 }

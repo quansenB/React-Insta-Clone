@@ -16,11 +16,12 @@ function SearchBar(props) {
           </g>
         </svg>
       </div>
-      <form onSubmit={props.onSearch} onClick={props.onSearchClick}>
+      <form onSubmit={props.onSearch}>
         <input
           className="search"
           type="text"
-          value={props.default}
+          placeholder="Search..."
+          value={props.searchValue}
           onChange={props.onChange}
         />
       </form>
